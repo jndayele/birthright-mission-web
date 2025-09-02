@@ -67,6 +67,42 @@ const blogPosts = [
   }
 ];
 
+const announcements = [
+  {
+    id: 1,
+    title: "Leadership Development Program - Spring 2024",
+    description: "Join our intensive 6-month leadership development program designed for emerging church leaders and ministry professionals.",
+    date: "2024-03-15",
+    deadline: "2024-02-28",
+    location: "Main Campus",
+    duration: "6 months",
+    registrationLink: "https://forms.google.com/leadership-program-2024",
+    type: "Program"
+  },
+  {
+    id: 2,
+    title: "Annual Missions Conference",
+    description: "A three-day conference featuring renowned speakers, workshops, and opportunities to connect with mission organizations worldwide.",
+    date: "2024-04-10",
+    deadline: "2024-04-05",
+    location: "Conference Hall",
+    duration: "3 days",
+    registrationLink: "https://forms.google.com/missions-conference-2024",
+    type: "Event"
+  },
+  {
+    id: 3,
+    title: "Skills Training Workshop - Carpentry Basics",
+    description: "Learn fundamental carpentry skills in this hands-on workshop. Perfect for beginners and those looking to enhance their practical skills.",
+    date: "2024-02-20",
+    deadline: "2024-02-15",
+    location: "Carpentry Workshop",
+    duration: "2 weeks",
+    registrationLink: "https://forms.google.com/carpentry-workshop-2024",
+    type: "Workshop"
+  }
+];
+
 const categories = ["All", "Education", "Skills Training", "Missions", "Testimonies", "Leadership", "Technology"];
 
 const Blog = () => {
@@ -84,9 +120,68 @@ const Blog = () => {
         </div>
       </section>
 
+      {/* Announcements Section */}
+      <section className="py-20 bg-accent/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-4">Upcoming Programs & Events</h2>
+          <p className="text-muted-foreground text-center mb-12">
+            Don't miss out on these exciting opportunities to grow and learn
+          </p>
+          
+          {announcements.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground text-lg">No upcoming announcements at this time.</p>
+              <p className="text-muted-foreground">Check back soon for new programs and events!</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {announcements.map((announcement) => (
+                <Card key={announcement.id} className="h-full flex flex-col">
+                  <CardContent className="p-6 flex-1">
+                    <Badge variant="outline" className="mb-3">
+                      {announcement.type}
+                    </Badge>
+                    <h3 className="text-xl font-bold mb-3">{announcement.title}</h3>
+                    <p className="text-muted-foreground mb-4 text-sm">
+                      {announcement.description}
+                    </p>
+                    <div className="space-y-2 text-sm text-muted-foreground mb-6">
+                      <div className="flex items-center gap-2">
+                        <CalendarDays className="h-4 w-4" />
+                        <span>Starts: {new Date(announcement.date).toLocaleDateString()}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Clock className="h-4 w-4" />
+                        <span>Duration: {announcement.duration}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <User className="h-4 w-4" />
+                        <span>Location: {announcement.location}</span>
+                      </div>
+                      <div className="text-destructive">
+                        <strong>Deadline: {new Date(announcement.deadline).toLocaleDateString()}</strong>
+                      </div>
+                    </div>
+                    <Button asChild className="w-full">
+                      <a href={announcement.registrationLink} target="_blank" rel="noopener noreferrer">
+                        Register Now
+                      </a>
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
       {/* Blog Content */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-4">Latest Blog Posts</h2>
+          <p className="text-muted-foreground text-center mb-12">
+            Read the latest insights and stories from our community
+          </p>
           {/* Category Filter */}
           <div className="flex flex-wrap gap-2 justify-center mb-12">
             {categories.map((category) => (
@@ -101,85 +196,100 @@ const Blog = () => {
             ))}
           </div>
 
-          {/* Featured Post */}
-          <Card className="mb-12 overflow-hidden">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-              <div className="h-64 lg:h-auto">
-                <img 
-                  src="/api/placeholder/600/400" 
-                  alt="Featured Post"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <CardContent className="p-8 flex flex-col justify-center">
-                <Badge variant="secondary" className="w-fit mb-4">Featured</Badge>
-                <h2 className="text-3xl font-bold mb-4 text-foreground">
-                  {blogPosts[0].title}
-                </h2>
-                <p className="text-muted-foreground mb-6 text-lg">
-                  {blogPosts[0].excerpt}
-                </p>
-                <div className="flex items-center gap-4 text-sm text-muted-foreground mb-6">
-                  <div className="flex items-center gap-1">
-                    <User className="h-4 w-4" />
-                    {blogPosts[0].author}
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <CalendarDays className="h-4 w-4" />
-                    {new Date(blogPosts[0].date).toLocaleDateString()}
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Clock className="h-4 w-4" />
-                    {blogPosts[0].readTime}
-                  </div>
-                </div>
-                <Button className="w-fit group">
-                  Read More
-                  <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </CardContent>
+          {blogPosts.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground text-lg">No blog posts available at this time.</p>
+              <p className="text-muted-foreground">Check back soon for new content!</p>
             </div>
-          </Card>
+          ) : (
+            <>
+              {/* Featured Post */}
+              <Card className="mb-12 overflow-hidden">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                  <div className="h-64 lg:h-auto">
+                    <img 
+                      src="/api/placeholder/600/400" 
+                      alt="Featured Post"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <CardContent className="p-8 flex flex-col justify-center">
+                    <Badge variant="secondary" className="w-fit mb-4">Featured</Badge>
+                    <h2 className="text-3xl font-bold mb-4 text-foreground">
+                      {blogPosts[0].title}
+                    </h2>
+                    <p className="text-muted-foreground mb-6 text-lg">
+                      {blogPosts[0].excerpt}
+                    </p>
+                    <div className="flex items-center gap-4 text-sm text-muted-foreground mb-6">
+                      <div className="flex items-center gap-1">
+                        <User className="h-4 w-4" />
+                        {blogPosts[0].author}
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <CalendarDays className="h-4 w-4" />
+                        {new Date(blogPosts[0].date).toLocaleDateString()}
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Clock className="h-4 w-4" />
+                        {blogPosts[0].readTime}
+                      </div>
+                    </div>
+                    <Button asChild className="w-fit group">
+                      <Link to={`/blog/${blogPosts[0].id}`}>
+                        Read More
+                        <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                      </Link>
+                    </Button>
+                  </CardContent>
+                </div>
+              </Card>
+            </>
+          )}
 
           {/* Blog Posts Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.slice(1).map((post) => (
-              <Card key={post.id} className="group overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                <div className="h-48 overflow-hidden">
-                  <img 
-                    src={post.image} 
-                    alt={post.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <CardContent className="p-6">
-                  <Badge variant="outline" className="mb-3">
-                    {post.category}
-                  </Badge>
-                  <h3 className="text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">
-                    {post.title}
-                  </h3>
-                  <p className="text-muted-foreground mb-4 text-sm">
-                    {post.excerpt}
-                  </p>
-                  <div className="flex items-center gap-4 text-xs text-muted-foreground mb-4">
-                    <div className="flex items-center gap-1">
-                      <User className="h-3 w-3" />
-                      {post.author}
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <CalendarDays className="h-3 w-3" />
-                      {new Date(post.date).toLocaleDateString()}
-                    </div>
+          {blogPosts.length > 1 && (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {blogPosts.slice(1).map((post) => (
+                <Card key={post.id} className="group overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                  <div className="h-48 overflow-hidden">
+                    <img 
+                      src={post.image} 
+                      alt={post.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
                   </div>
-                  <Button variant="ghost" size="sm" className="p-0 h-auto group text-primary hover:text-primary-dark">
-                    Read More
-                    <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                  <CardContent className="p-6">
+                    <Badge variant="outline" className="mb-3">
+                      {post.category}
+                    </Badge>
+                    <h3 className="text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">
+                      {post.title}
+                    </h3>
+                    <p className="text-muted-foreground mb-4 text-sm">
+                      {post.excerpt}
+                    </p>
+                    <div className="flex items-center gap-4 text-xs text-muted-foreground mb-4">
+                      <div className="flex items-center gap-1">
+                        <User className="h-3 w-3" />
+                        {post.author}
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <CalendarDays className="h-3 w-3" />
+                        {new Date(post.date).toLocaleDateString()}
+                      </div>
+                    </div>
+                    <Button asChild variant="ghost" size="sm" className="p-0 h-auto group text-primary hover:text-primary-dark">
+                      <Link to={`/blog/${post.id}`}>
+                        Read More
+                        <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                      </Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          )}
 
           {/* Load More Button */}
           <div className="text-center mt-12">
