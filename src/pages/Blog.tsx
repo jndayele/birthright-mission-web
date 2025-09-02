@@ -182,6 +182,7 @@ const Blog = () => {
           <p className="text-muted-foreground text-center mb-12">
             Read the latest insights and stories from our community
           </p>
+
           {/* Category Filter */}
           <div className="flex flex-wrap gap-2 justify-center mb-12">
             {categories.map((category) => (
@@ -244,59 +245,59 @@ const Blog = () => {
                   </CardContent>
                 </div>
               </Card>
+
+              {/* Blog Posts Grid */}
+              {blogPosts.length > 1 && (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {blogPosts.slice(1).map((post) => (
+                    <Card key={post.id} className="group overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                      <div className="h-48 overflow-hidden">
+                        <img 
+                          src={post.image} 
+                          alt={post.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                      <CardContent className="p-6">
+                        <Badge variant="outline" className="mb-3">
+                          {post.category}
+                        </Badge>
+                        <h3 className="text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">
+                          {post.title}
+                        </h3>
+                        <p className="text-muted-foreground mb-4 text-sm">
+                          {post.excerpt}
+                        </p>
+                        <div className="flex items-center gap-4 text-xs text-muted-foreground mb-4">
+                          <div className="flex items-center gap-1">
+                            <User className="h-3 w-3" />
+                            {post.author}
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <CalendarDays className="h-3 w-3" />
+                            {new Date(post.date).toLocaleDateString()}
+                          </div>
+                        </div>
+                        <Button asChild variant="ghost" size="sm" className="p-0 h-auto group text-primary hover:text-primary-dark">
+                          <Link to={`/blog/${post.id}`}>
+                            Read More
+                            <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                          </Link>
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              )}
+
+              {/* Load More Button */}
+              <div className="text-center mt-12">
+                <Button variant="outline" size="lg">
+                  Load More Posts
+                </Button>
+              </div>
             </>
           )}
-
-          {/* Blog Posts Grid */}
-          {blogPosts.length > 1 && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {blogPosts.slice(1).map((post) => (
-                <Card key={post.id} className="group overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                  <div className="h-48 overflow-hidden">
-                    <img 
-                      src={post.image} 
-                      alt={post.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <CardContent className="p-6">
-                    <Badge variant="outline" className="mb-3">
-                      {post.category}
-                    </Badge>
-                    <h3 className="text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">
-                      {post.title}
-                    </h3>
-                    <p className="text-muted-foreground mb-4 text-sm">
-                      {post.excerpt}
-                    </p>
-                    <div className="flex items-center gap-4 text-xs text-muted-foreground mb-4">
-                      <div className="flex items-center gap-1">
-                        <User className="h-3 w-3" />
-                        {post.author}
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <CalendarDays className="h-3 w-3" />
-                        {new Date(post.date).toLocaleDateString()}
-                      </div>
-                    </div>
-                    <Button asChild variant="ghost" size="sm" className="p-0 h-auto group text-primary hover:text-primary-dark">
-                      <Link to={`/blog/${post.id}`}>
-                        Read More
-                        <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          )}
-
-          {/* Load More Button */}
-          <div className="text-center mt-12">
-            <Button variant="outline" size="lg">
-              Load More Posts
-            </Button>
-          </div>
         </div>
       </section>
 
