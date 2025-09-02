@@ -81,8 +81,8 @@ const GalleryPreview = () => {
         <div className="relative">
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex gap-6">
-              {galleryItems.map((item) => (
-                <div key={item.id} className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%]">
+              {galleryItems.map((item, index) => (
+                <div key={`gallery-item-${index}`} className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%]">
                   <Card className="card-elevated hover-lift group overflow-hidden h-full">
                     <div className="relative">
                       <img

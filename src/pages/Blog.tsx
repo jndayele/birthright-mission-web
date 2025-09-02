@@ -77,7 +77,8 @@ const announcements = [
     location: "Main Campus",
     duration: "6 months",
     registrationLink: "https://forms.google.com/leadership-program-2024",
-    type: "Program"
+    type: "Program",
+    image: "/api/placeholder/400/250"
   },
   {
     id: 2,
@@ -88,7 +89,8 @@ const announcements = [
     location: "Conference Hall",
     duration: "3 days",
     registrationLink: "https://forms.google.com/missions-conference-2024",
-    type: "Event"
+    type: "Event",
+    image: "/api/placeholder/400/250"
   },
   {
     id: 3,
@@ -99,7 +101,8 @@ const announcements = [
     location: "Carpentry Workshop",
     duration: "2 weeks",
     registrationLink: "https://forms.google.com/carpentry-workshop-2024",
-    type: "Workshop"
+    type: "Workshop",
+    image: "/api/placeholder/400/250"
   }
 ];
 
@@ -136,13 +139,20 @@ const Blog = () => {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {announcements.map((announcement) => (
-                <Card key={announcement.id} className="h-full flex flex-col">
-                  <CardContent className="p-6 flex-1">
-                    <Badge variant="outline" className="mb-3">
+                <Card key={announcement.id} className="h-full flex flex-col group hover:shadow-lg transition-shadow duration-300">
+                  <div className="h-48 overflow-hidden">
+                    <img 
+                      src={announcement.image} 
+                      alt={announcement.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <CardContent className="p-6 flex-1 flex flex-col">
+                    <Badge variant="outline" className="mb-3 w-fit">
                       {announcement.type}
                     </Badge>
-                    <h3 className="text-xl font-bold mb-3">{announcement.title}</h3>
-                    <p className="text-muted-foreground mb-4 text-sm">
+                    <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{announcement.title}</h3>
+                    <p className="text-muted-foreground mb-4 text-sm flex-1">
                       {announcement.description}
                     </p>
                     <div className="space-y-2 text-sm text-muted-foreground mb-6">
@@ -162,11 +172,18 @@ const Blog = () => {
                         <strong>Deadline: {new Date(announcement.deadline).toLocaleDateString()}</strong>
                       </div>
                     </div>
-                    <Button asChild className="w-full">
-                      <a href={announcement.registrationLink} target="_blank" rel="noopener noreferrer">
-                        Register Now
-                      </a>
-                    </Button>
+                    <div className="flex gap-2">
+                      <Button asChild variant="outline" className="flex-1">
+                        <Link to={`/announcement/${announcement.id}`}>
+                          Read More
+                        </Link>
+                      </Button>
+                      <Button asChild className="flex-1">
+                        <a href={announcement.registrationLink} target="_blank" rel="noopener noreferrer">
+                          Register
+                        </a>
+                      </Button>
+                    </div>
                   </CardContent>
                 </Card>
               ))}
