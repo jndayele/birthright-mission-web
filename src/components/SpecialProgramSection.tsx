@@ -53,16 +53,24 @@ const SpecialProgramSection = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Image */}
+          {/* Video */}
           <div className="relative">
             <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-              <img
-                src={teachingCrusadeHero}
-                alt="Teaching Crusade for Creativity Program"
+              <video
                 className="w-full h-[400px] object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
+                controls
+                poster={teachingCrusadeHero}
+                preload="metadata"
+              >
+                <source src="/videos/teaching-crusade-promo.mp4" type="video/mp4" />
+                <source src="/videos/teaching-crusade-promo.webm" type="video/webm" />
+                Your browser does not support the video tag.
+              </video>
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent pointer-events-none" />
             </div>
+            <p className="text-xs text-muted-foreground mt-2 text-center">
+              Watch our program introduction video
+            </p>
           </div>
 
           {/* Content */}
