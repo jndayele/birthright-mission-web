@@ -13,6 +13,7 @@ import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import AnnouncementPage from "./pages/AnnouncementPage";
+import TeachingCrusade from "./pages/TeachingCrusade";
 import NotFound from "./pages/NotFound";
 import { ToastContainer } from "react-toastify";
 
@@ -35,6 +36,7 @@ const App = () => (
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogPost />} />
           <Route path="/announcement/:id" element={<AnnouncementPage />} />
+          <Route path="/teaching-crusade" element={<TeachingCrusade />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -3,6 +3,7 @@ import HeroSection from '@/components/HeroSection';
 import AboutPreview from '@/components/AboutPreview';
 import FeaturedDepartments from '@/components/FeaturedDepartments';
 import MandateSection from '@/components/MandateSection';
+import SpecialProgramSection from '@/components/SpecialProgramSection';
 import TestimonialSection from '@/components/TestimonialSection';
 import GalleryPreview from '@/components/GalleryPreview';
 import Footer from '@/components/Footer';
@@ -15,6 +16,7 @@ const Index = () => {
       <AboutPreview />
       <FeaturedDepartments />
       <MandateSection />
+      <SpecialProgramSection />
       <TestimonialSection />
       <GalleryPreview />
       <Footer />
