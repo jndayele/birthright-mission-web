@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import {Phone, Mail, MapPin, Facebook, Twitter, Instagram, Youtube } from 'lucide-react';
+import {Phone, Mail, MapPin, Facebook, Twitter, Instagram, Youtube, Heart } from 'lucide-react';
 import logo from '@/assets/logo.png';
 
 const Footer = () => {
@@ -31,7 +31,7 @@ const Footer = () => {
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Brand Section */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center space-x-2 mb-6">
@@ -119,6 +119,31 @@ const Footer = () => {
                 <Mail className="h-5 w-5 text-accent" />
                 <p className="text-sm opacity-80">birthrightchildrenministries@gmail.com</p>
               </div>
+            </div>
+          </div>
+
+          {/* Support Us */}
+          <div>
+            <h4 className="text-lg font-semibold mb-4 flex items-center gap-2">
+              <Heart className="h-5 w-5 text-accent" />
+              Support Us
+            </h4>
+            <div className="space-y-3">
+              <p className="text-sm opacity-80 leading-relaxed">
+                Support our mission by sponsoring, sowing a seed, or paying an offering to help the institute grow.
+              </p>
+              <div className="bg-white/10 rounded-lg p-4 space-y-2">
+                <p className="text-sm font-medium">Mobile Money</p>
+                <p className="text-sm opacity-80">
+                  <span className="font-medium">Number:</span> 0558406464
+                </p>
+                <p className="text-sm opacity-80">
+                  <span className="font-medium">Name:</span> Brightright Ministries
+                </p>
+              </div>
+              <p className="text-xs opacity-70">
+                Your support helps us empower more lives through education and ministry.
+              </p>
             </div>
           </div>
         </div>
