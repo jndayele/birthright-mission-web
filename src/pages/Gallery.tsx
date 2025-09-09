@@ -3,6 +3,7 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { Eye, Users, BookOpen, Wrench, Heart } from 'lucide-react';
 import BMI from "@/assets/bmi.jpg"
 import PresVice from "@/assets/pres-vice.jpg"
@@ -13,6 +14,7 @@ import pres from "@/assets/pres.jpg"
 
 const Gallery = () => {
   const [activeCategory, setActiveCategory] = useState('all');
+  const [visibleCount, setVisibleCount] = useState(6);
 
   const categories = [
     { name: 'All', filter: 'all', icon: Eye },
@@ -69,6 +71,13 @@ const Gallery = () => {
   const filteredItems = activeCategory === 'all' 
     ? galleryItems 
     : galleryItems.filter(item => item.category === activeCategory);
+  
+  const displayedItems = filteredItems.slice(0, visibleCount);
+  const hasMore = visibleCount < filteredItems.length;
+  
+  const loadMore = () => {
+    setVisibleCount(prev => prev + 6);
+  };
 
   return (
     <div className="min-h-screen">
@@ -113,7 +122,7 @@ const Gallery = () => {
       <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredItems.map((item) => (
+            {displayedItems.map((item) => (
               <Card key={item.id} className="card-elevated hover-lift group overflow-hidden">
                 <div className="relative">
                   <img
@@ -144,6 +153,20 @@ const Gallery = () => {
               </Card>
             ))}
           </div>
+          
+          {/* Load More Button */}
+          {hasMore && (
+            <div className="flex justify-center mt-12">
+              <Button 
+                onClick={loadMore}
+                variant="outline" 
+                size="lg"
+                className="px-8 py-3"
+              >
+                Load More Images
+              </Button>
+            </div>
+          )}
         </div>
       </section>
 
