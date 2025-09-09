@@ -4,17 +4,38 @@ import Footer from '@/components/Footer';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Eye, Users, BookOpen, Wrench, Heart } from 'lucide-react';
+import { Eye, Users, BookOpen, Wrench, Heart, Loader2 } from 'lucide-react';
 import BMI from "@/assets/bmi.jpg"
 import PresVice from "@/assets/pres-vice.jpg"
 import Student from "@/assets/student-short-tem-certificate.jpg"
 import victor from "@/assets/victor.jpg"
 import pres from "@/assets/pres.jpg"
+import commissioning from "@/assets/comminisioning.jpeg"
+import coordinatorGift from "@/assets/coordinator_gift.jpeg"
+import event from "@/assets/event.jpeg"
+import facultyLecturers from "@/assets/faculty_lecturers.jpeg"
+import facultyMembers from "@/assets/faculty_members.jpeg"
+import facultyPraying from "@/assets/faculty_praying.jpeg"
+import graduation1 from "@/assets/graduation1.jpeg"
+import lecturersPraying from "@/assets/lecturers_praying.jpeg"
+import presCoordinator from "@/assets/pres_coordinator.jpeg"
+import presCorGift from "@/assets/pres_cor_gift.jpeg"
+import presidentCoor from "@/assets/president_coor.jpeg"
+import presidentGivingGift from "@/assets/president_gicving_gift.jpeg"
+import presidentGift from "@/assets/president_gift.jpeg"
+import stuFaculty from "@/assets/stu_faculty.jpeg"
+import studentImg from "@/assets/student.jpeg"
+import studentGift1 from "@/assets/student_gift1.jpeg"
+import studentGift2 from "@/assets/student_gift2.jpeg"
+import studentGift3 from "@/assets/student_gift3.jpeg"
+import studentThanks from "@/assets/student_thanks.jpeg"
+import studentVote from "@/assets/student_vote.jpeg"
 
 
 const Gallery = () => {
   const [activeCategory, setActiveCategory] = useState('all');
   const [visibleCount, setVisibleCount] = useState(6);
+  const [isLoading, setIsLoading] = useState(false);
 
   const categories = [
     { name: 'All', filter: 'all', icon: Eye },
@@ -41,7 +62,7 @@ const Gallery = () => {
       category: 'leader',
       tags: ['Faculty', 'Member', 'Leader']
     },
-      {
+    {
       id: 3,
       src: pres,
       title: 'Rev. Victor Babamuboni',
@@ -57,7 +78,7 @@ const Gallery = () => {
       category: 'academic',
       tags: ['Certificate', 'Students', 'Academic']
     },
-      {
+    {
       id: 5,
       src: victor,
       title: 'President of Birthright Mission Institute',
@@ -65,7 +86,166 @@ const Gallery = () => {
       category: 'leader',
       tags: ['Birthright', 'President', 'Mission']
     },
-    
+    {
+      id: 6,
+      src: commissioning,
+      title: 'Commissioning Ceremony',
+      description: 'Special commissioning ceremony for new graduates',
+      category: 'academic',
+      tags: ['Commissioning', 'Ceremony', 'Graduation']
+    },
+    {
+      id: 7,
+      src: coordinatorGift,
+      title: 'Coordinator Appreciation',
+      description: 'Coordinator receiving appreciation gift for service',
+      category: 'academic',
+      tags: ['Coordinator', 'Gift', 'Appreciation']
+    },
+    {
+      id: 8,
+      src: event,
+      title: 'Institute Event',
+      description: 'Special event at Birthright Mission Institute',
+      category: 'academic',
+      tags: ['Event', 'Institute', 'Community']
+    },
+    {
+      id: 9,
+      src: facultyLecturers,
+      title: 'Faculty Lecturers',
+      description: 'Dedicated lecturers of our academic faculty',
+      category: 'academic',
+      tags: ['Faculty', 'Lecturers', 'Education']
+    },
+    {
+      id: 10,
+      src: facultyMembers,
+      title: 'Faculty Team',
+      description: 'Our distinguished faculty members in session',
+      category: 'academic',
+      tags: ['Faculty', 'Team', 'Academic']
+    },
+    {
+      id: 11,
+      src: facultyPraying,
+      title: 'Faculty Prayer',
+      description: 'Faculty members in prayer and fellowship',
+      category: 'academic',
+      tags: ['Faculty', 'Prayer', 'Fellowship']
+    },
+    {
+      id: 12,
+      src: graduation1,
+      title: 'Graduation Ceremony',
+      description: 'Celebrating our graduating students',
+      category: 'academic',
+      tags: ['Graduation', 'Students', 'Achievement']
+    },
+    {
+      id: 13,
+      src: lecturersPraying,
+      title: 'Lecturers in Prayer',
+      description: 'Lecturers gathered in prayer session',
+      category: 'academic',
+      tags: ['Lecturers', 'Prayer', 'Spiritual']
+    },
+    {
+      id: 14,
+      src: presCoordinator,
+      title: 'President with Coordinator',
+      description: 'President meeting with program coordinator',
+      category: 'academic',
+      tags: ['President', 'Coordinator', 'Leadership']
+    },
+    {
+      id: 15,
+      src: presCorGift,
+      title: 'Presidential Gift',
+      description: 'President presenting gift to coordinator',
+      category: 'academic',
+      tags: ['President', 'Gift', 'Recognition']
+    },
+    {
+      id: 16,
+      src: presidentCoor,
+      title: 'Leadership Meeting',
+      description: 'President and coordinator in discussion',
+      category: 'academic',
+      tags: ['Leadership', 'Meeting', 'Coordination']
+    },
+    {
+      id: 17,
+      src: presidentGivingGift,
+      title: 'President Giving Gift',
+      description: 'President presenting special gift',
+      category: 'academic',
+      tags: ['President', 'Gift', 'Ceremony']
+    },
+    {
+      id: 18,
+      src: presidentGift,
+      title: 'Presidential Recognition',
+      description: 'Presidential gift presentation ceremony',
+      category: 'academic',
+      tags: ['President', 'Recognition', 'Honor']
+    },
+    {
+      id: 19,
+      src: stuFaculty,
+      title: 'Students and Faculty',
+      description: 'Students with faculty members interaction',
+      category: 'academic',
+      tags: ['Students', 'Faculty', 'Interaction']
+    },
+    {
+      id: 20,
+      src: studentImg,
+      title: 'Student Life',
+      description: 'Students engaged in academic activities',
+      category: 'academic',
+      tags: ['Students', 'Academic', 'Learning']
+    },
+    {
+      id: 21,
+      src: studentGift1,
+      title: 'Student Recognition 1',
+      description: 'Student receiving recognition gift',
+      category: 'academic',
+      tags: ['Student', 'Gift', 'Achievement']
+    },
+    {
+      id: 22,
+      src: studentGift2,
+      title: 'Student Recognition 2',
+      description: 'Another student receiving appreciation',
+      category: 'academic',
+      tags: ['Student', 'Recognition', 'Excellence']
+    },
+    {
+      id: 23,
+      src: studentGift3,
+      title: 'Student Recognition 3',
+      description: 'Student being honored for achievement',
+      category: 'academic',
+      tags: ['Student', 'Honor', 'Success']
+    },
+    {
+      id: 24,
+      src: studentThanks,
+      title: 'Student Gratitude',
+      description: 'Student expressing gratitude and thanks',
+      category: 'academic',
+      tags: ['Student', 'Gratitude', 'Appreciation']
+    },
+    {
+      id: 25,
+      src: studentVote,
+      title: 'Student Voting',
+      description: 'Students participating in voting process',
+      category: 'academic',
+      tags: ['Student', 'Voting', 'Democracy']
+    },
   ];
 
   const filteredItems = activeCategory === 'all' 
@@ -76,7 +256,12 @@ const Gallery = () => {
   const hasMore = visibleCount < filteredItems.length;
   
   const loadMore = () => {
-    setVisibleCount(prev => prev + 6);
+    setIsLoading(true);
+    // Add loading effect
+    setTimeout(() => {
+      setVisibleCount(prev => prev + 6);
+      setIsLoading(false);
+    }, 800);
   };
 
   return (
@@ -161,9 +346,17 @@ const Gallery = () => {
                 onClick={loadMore}
                 variant="outline" 
                 size="lg"
-                className="px-8 py-3"
+                className="px-8 py-3 transition-all duration-300 hover:scale-105"
+                disabled={isLoading}
               >
-                Load More Images
+                {isLoading ? (
+                  <>
+                    <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                    Loading...
+                  </>
+                ) : (
+                  'Load More Images'
+                )}
               </Button>
             </div>
           )}
