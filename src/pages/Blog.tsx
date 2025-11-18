@@ -7,6 +7,26 @@ import { Link } from 'react-router-dom';
 const blogPosts = [
   {
     id: 1,
+    title: "Christian Entrepreneurship and Community Development: Empowering Communities through Business",
+    excerpt: "Explore how Christian entrepreneurs can make a positive impact through community development and economic empowerment, creating jobs and serving others.",
+    author: "Rev. Victor Babamuboni",
+    date: "2024-02-15",
+    readTime: "8 min read",
+    category: "Entrepreneurship",
+    image: "/api/placeholder/400/250"
+  },
+  {
+    id: 2,
+    title: "Faith and Finances: Managing Your Business Finances with Wisdom",
+    excerpt: "Discover biblical principles for managing business finances with wisdom, honesty, and integrity while honoring God.",
+    author: "Rev. Victor Babamuboni",
+    date: "2024-02-10",
+    readTime: "7 min read",
+    category: "Finance",
+    image: "/api/placeholder/400/250"
+  },
+  {
+    id: 3,
     title: "Transforming Lives Through Biblical Education",
     excerpt: "Discover how our holistic approach to education is empowering students to become effective ministers and skilled professionals.",
     author: "Dr. Samuel Adebayo",
@@ -16,7 +36,7 @@ const blogPosts = [
     image: "/api/placeholder/400/250"
   },
   {
-    id: 2,
+    id: 4,
     title: "Building Community Through Skills Training",
     excerpt: "Learn about our carpentry and welding programs that are equipping students with practical skills for entrepreneurship.",
     author: "Sarah Johnson",
@@ -26,7 +46,7 @@ const blogPosts = [
     image: "/api/placeholder/400/250"
   },
   {
-    id: 3,
+    id: 5,
     title: "Mission Field Preparation: Cross-Cultural Ministry",
     excerpt: "Preparing students for effective cross-cultural ministry and evangelism in diverse communities worldwide.",
     author: "Rev. Michael Thompson",
@@ -36,7 +56,7 @@ const blogPosts = [
     image: "/api/placeholder/400/250"
   },
   {
-    id: 4,
+    id: 6,
     title: "Student Testimonies: Lives Changed",
     excerpt: "Hear from our graduates about how their time at Birthright Mission Institute has transformed their lives and ministry.",
     author: "Grace Okafor",
@@ -46,7 +66,7 @@ const blogPosts = [
     image: "/api/placeholder/400/250"
   },
   {
-    id: 5,
+    id: 7,
     title: "Leadership Development in Action",
     excerpt: "How our leadership programs are raising the next generation of Christian leaders for global impact.",
     author: "Pastor David Wilson",
@@ -56,7 +76,7 @@ const blogPosts = [
     image: "/api/placeholder/400/250"
   },
   {
-    id: 6,
+    id: 8,
     title: "Technology in Ministry: IT Training at BMI",
     excerpt: "Exploring how our IT department is preparing students to use technology for effective ministry and business.",
     author: "James Okonkwo",
@@ -106,7 +126,7 @@ const announcements = [
   }
 ];
 
-const categories = ["All", "Education", "Skills Training", "Missions", "Testimonies", "Leadership", "Technology"];
+const categories = ["All", "Entrepreneurship", "Finance", "Education", "Skills Training", "Missions", "Testimonies", "Leadership", "Technology"];
 
 const Blog = () => {
   return (
