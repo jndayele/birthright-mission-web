@@ -3,6 +3,8 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { CalendarDays, Clock, User, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
 
 const blogPosts = [
   {
@@ -131,6 +133,7 @@ const categories = ["All", "Entrepreneurship", "Finance", "Education", "Skills T
 const Blog = () => {
   return (
     <div className="min-h-screen bg-background">
+      <Navigation />
       {/* Header */}
       <section className="bg-gradient-to-r from-primary to-primary-dark py-20 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -357,6 +360,8 @@ const Blog = () => {
           </div>
         </div>
       </section>
+      
+      <Footer />
     </div>
   );
 };
