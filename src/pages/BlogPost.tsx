@@ -3,6 +3,8 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { CalendarDays, Clock, User, ArrowLeft } from 'lucide-react';
+import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
 
 const blogPosts = [
   {
@@ -191,23 +193,28 @@ const BlogPost = () => {
 
   if (!post) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
-          <p className="text-muted-foreground mb-8">The blog post you're looking for doesn't exist.</p>
-          <Link to="/blog">
-            <Button>
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to Blog
-            </Button>
-          </Link>
+      <div className="min-h-screen bg-background">
+        <Navigation />
+        <div className="flex items-center justify-center py-20">
+          <div className="text-center">
+            <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
+            <p className="text-muted-foreground mb-8">The blog post you're looking for doesn't exist.</p>
+            <Link to="/blog">
+              <Button>
+                <ArrowLeft className="h-4 w-4 mr-2" />
+                Back to Blog
+              </Button>
+            </Link>
+          </div>
         </div>
+        <Footer />
       </div>
     );
   }
 
   return (
     <div className="min-h-screen bg-background">
+      <Navigation />
       {/* Header */}
       <section className="bg-gradient-to-r from-primary to-primary-dark py-20 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -266,6 +273,8 @@ const BlogPost = () => {
           </div>
         </div>
       </section>
+      
+      <Footer />
     </div>
   );
 };
