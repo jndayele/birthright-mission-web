@@ -5,6 +5,8 @@ import { CalendarDays, Clock, User, ArrowRight, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import blog1Image from '@/assets/blog1.jpg';
+import blog2Image from '@/assets/blog2.jpg';
 
 const blogPosts = [
   {
@@ -15,7 +17,7 @@ const blogPosts = [
     date: "2024-02-20",
     readTime: "8 min read",
     category: "Entrepreneurship",
-    image: "/api/placeholder/400/250"
+    image: blog1Image
   },
   {
     id: 2,
@@ -25,7 +27,7 @@ const blogPosts = [
     date: "2024-02-15",
     readTime: "7 min read",
     category: "Finance",
-    image: "/api/placeholder/400/250"
+    image: blog2Image
   }
 ];
 
@@ -137,7 +139,12 @@ const Blog = () => {
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {blogPosts.map((post) => (
               <Card key={post.id} className="overflow-hidden hover:shadow-xl transition-all duration-300 group">
-                <div className="aspect-video bg-gradient-to-br from-primary/20 to-primary-dark/20 relative overflow-hidden">
+                <div className="aspect-video relative overflow-hidden">
+                  <img 
+                    src={post.image} 
+                    alt={post.title}
+                    className="w-full h-full object-cover"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                   <div className="absolute bottom-4 left-4 right-4">
                     <Badge className="bg-white text-primary">{post.category}</Badge>

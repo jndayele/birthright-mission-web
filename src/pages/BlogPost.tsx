@@ -4,6 +4,8 @@ import { Badge } from '@/components/ui/badge';
 import { CalendarDays, Clock, User, ArrowLeft } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import blog1Image from '@/assets/blog1.jpg';
+import blog2Image from '@/assets/blog2.jpg';
 
 const blogPosts = [
   {
@@ -74,7 +76,8 @@ const blogPosts = [
     author: "Rev. Victor Babamuboni",
     date: "2024-02-20",
     readTime: "8 min read",
-    category: "Entrepreneurship"
+    category: "Entrepreneurship",
+    image: blog1Image
   },
   {
     id: 2,
@@ -151,7 +154,8 @@ const blogPosts = [
     author: "Rev. Victor Babamuboni",
     date: "2024-02-15",
     readTime: "7 min read",
-    category: "Finance"
+    category: "Finance",
+    image: blog2Image
   }
 ];
 
@@ -212,6 +216,17 @@ const BlogPost = () => {
           </div>
         </div>
       </section>
+
+      {/* Featured Image */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 mb-12">
+        <div className="rounded-lg overflow-hidden shadow-xl">
+          <img 
+            src={post.image} 
+            alt={post.title}
+            className="w-full h-auto object-cover"
+          />
+        </div>
+      </div>
 
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div 
