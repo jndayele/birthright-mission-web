@@ -9,22 +9,22 @@ import Footer from '@/components/Footer';
 const blogPosts = [
   {
     id: 1,
-    title: "Empowering Future Leaders Through Biblical Education",
-    excerpt: "Discover how Birthright Mission Institute combines biblical teaching with practical skills training to shape tomorrow's Christian leaders and entrepreneurs.",
+    title: "Christian Entrepreneurship and Community Development: Empowering Communities through Business",
+    excerpt: "As a Christian entrepreneur, you're likely driven by a desire to make a positive impact in the world. Discover how to create jobs, stimulate economic growth, and provide valuable goods and services to your community.",
     author: "Rev. Victor Babamuboni",
     date: "2024-02-20",
-    readTime: "6 min read",
-    category: "Education",
+    readTime: "8 min read",
+    category: "Entrepreneurship",
     image: "/api/placeholder/400/250"
   },
   {
     id: 2,
-    title: "The Impact of Short-Term Training Programs on Community Development",
-    excerpt: "Learn how our intensive short-term courses in carpentry, welding, and information technology are transforming lives and empowering communities across Nigeria.",
+    title: "Faith and Finances: Managing Your Business Finances with Wisdom",
+    excerpt: "Managing finances is a crucial aspect of running a successful business. Learn biblical principles and practical tips for managing your business finances with wisdom and integrity.",
     author: "Rev. Victor Babamuboni",
     date: "2024-02-15",
-    readTime: "5 min read",
-    category: "Skills Training",
+    readTime: "7 min read",
+    category: "Finance",
     image: "/api/placeholder/400/250"
   }
 ];
